@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">College Manager</string>
-    <string name="login_as_student"> Login as Student </string>
-    <string name="login_as_faculty">Login as Faculty</string>
+    <string name="login_as_student">Login as Student</string>
+    <string name="login_as_faculty">Login as Teacher</string>
     <string name="login_as_admin">Login as Admin</string>
     <string name="welcome_to_dox">Welcome to DOX</string>
 </resources>

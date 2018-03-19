@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "46155448709",
+    "firebase_url": "https://collegemanager-5e9c0.firebaseio.com",
+    "project_id": "collegemanager-5e9c0",
+    "storage_bucket": "collegemanager-5e9c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46155448709:android:ead735b29123bafc",
+        "android_client_info": {
+          "package_name": "com.student.satyam.college_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46155448709-d1bchkd99jvqm6m549mpucu0def0t6ut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.student.satyam.college_manager",
+            "certificate_hash": "b404698731a32aa76587dd1a8837b85e3ab4ba7b"
+          }
+        },
+        {
+          "client_id": "46155448709-ii1ev2rt8uo2ebjm0vnh7a29o0i7p1fk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsI2-ebVTIkwv8GynBNnMLBSTJ8z0O72Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46155448709-ii1ev2rt8uo2ebjm0vnh7a29o0i7p1fk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
