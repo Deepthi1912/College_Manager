@@ -8,4 +8,5 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="signup">signup</string>
+    <string name="username">Username</string>
 </resources>
