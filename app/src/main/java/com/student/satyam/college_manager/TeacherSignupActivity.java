@@ -8,7 +8,7 @@ public class TeacherSignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_chooser);
+        setContentView(R.layout.activity_teacher_signup);
 
     }
 }
