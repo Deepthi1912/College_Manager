@@ -54,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="55dp"
         android:layout_marginStart="8dp"
+        android:onClick="adminSignup"
         android:text="@string/signup"
         app:layout_constraintBaseline_toBaselineOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
