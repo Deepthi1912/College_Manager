@@ -1,5 +1,6 @@
 package com.student.satyam.college_manager;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -72,8 +73,13 @@ public class AdminSignupActivity extends AppCompatActivity {
 
 
     private int checker(Admin admin){
-        if(admin.getPincode().length() != 8){return 1;}
+        if(admin.getPincode().length() != 6){return 1;}
         if(!confpassword.getText().toString().equals(password.getText().toString())){return 2;}
+        if(admin.getfName().equals("")){return 3;}
+        if(admin.getEmail().equals("")) {return 4;}
+        if(admin.getCity().equals("")) {return 5;}
+        if(admin.getCollegenameRaw().equals("")) {return 6;}
+        if(admin.getState().equals("")){return  7;}
         return 0;
     }
 
@@ -86,7 +92,8 @@ public class AdminSignupActivity extends AppCompatActivity {
         regProgress.setCanceledOnTouchOutside(false);
         regProgress.show();
         getValues();
-        if (checker(admin) == 0){
+        int check = checker(admin);
+        if (check == 0){
             mAuth.createUserWithEmailAndPassword(admin.getEmail(), password.getText().toString())
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -110,20 +117,35 @@ public class AdminSignupActivity extends AppCompatActivity {
                     );
         }
 
-        else if(checker(admin) == 1){
+        else if(check == 1){
              Toast.makeText(AdminSignupActivity.this, "Wrong Pincode", Toast.LENGTH_SHORT).show();
         }
 
-        else if(checker(admin) == 2){
+        else if(check == 2){
              Toast.makeText(AdminSignupActivity.this, "Password didnt match", Toast.LENGTH_SHORT).show();
         }
+
+        else if(check == 3){
+            Toast.makeText(AdminSignupActivity.this, "First name field can't be empty!!", Toast.LENGTH_LONG).show();
+        }
+
+        else if(check == 4){
+            Toast.makeText(AdminSignupActivity.this, "Email field can't be empty!!", Toast.LENGTH_LONG).show();
+        }
+
+        else if(check == 5){
+            Toast.makeText(AdminSignupActivity.this, "City field can't be empty!!", Toast.LENGTH_LONG).show();
+        }
+
+        else if(check == 6){
+            Toast.makeText(AdminSignupActivity.this, "College name field can't be empty!!", Toast.LENGTH_LONG).show();
+        }
+
+        else if(check == 7){
+            Toast.makeText(AdminSignupActivity.this, "State field can't be empty!!", Toast.LENGTH_LONG).show();
+        }
+
         regProgress.dismiss();
-
-
-
-
-
-
 
     }
 
