@@ -17,25 +17,29 @@
         <activity android:name=".LoginChooserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdminSignupActivity"
-                  android:parentActivityName=".LoginChooserActivity"/>
+        <activity
+            android:name=".AdminSignupActivity"
+            android:parentActivityName=".LoginChooserActivity" />
         <activity
             android:name=".StudentLoginActivity"
-            android:parentActivityName=".LoginChooserActivity"/>
-        <activity android:name=".TeacherLoginActivity"
-                  android:parentActivityName=".LoginChooserActivity"/>
-        <activity android:name=".AdminLoginActivity"
-            android:parentActivityName=".LoginChooserActivity"/>
-        <activity android:name=".StudentSignupActivity"
-            android:parentActivityName=".LoginChooserActivity"/>
-        <activity android:name=".TeacherSignupActivity"
-            android:parentActivityName=".LoginChooserActivity"/>
+            android:parentActivityName=".LoginChooserActivity" />
         <activity
-            android:name=".LoginActivity"
-            android:parentActivityName=".LoginChooserActivity"/>
+            android:name=".TeacherLoginActivity"
+            android:parentActivityName=".LoginChooserActivity" />
+        <activity
+            android:name=".AdminLoginActivity"
+            android:parentActivityName=".LoginChooserActivity" />
+        <activity
+            android:name=".StudentSignupActivity"
+            android:parentActivityName=".LoginChooserActivity" />
+        <activity
+            android:name=".TeacherSignupActivity"
+            android:parentActivityName=".LoginChooserActivity" />
+        <activity android:name=".AdminMainActivity"></activity>
     </application>
 
 </manifest>

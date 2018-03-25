@@ -4,22 +4,22 @@ public class Admin {
     private String fName;
     private String lName;
     private String collegename;
+    private String collegenameRaw;
     private String state;
     private String city;
     private String pincode;
-    private String password;
     private String email;
+    private String uid;
 
     public Admin(){}
 
-    public Admin(String fName, String lName, String collegename, String state, String city, String pincode, String password, String email) {
+    public Admin(String fName, String lName, String collegename, String state, String city, String pincode, String email) {
         this.fName = fName;
         this.lName = lName;
         this.collegename = collegename;
         this.state = state;
         this.city = city;
         this.pincode = pincode;
-        this.password = password;
         this.email = email;
     }
 
@@ -41,6 +41,14 @@ public class Admin {
 
     public String getCollegename() {
         return collegename;
+    }
+
+    public void setCollegenameRaw(String collegenameRaw) {
+        this.collegename = collegenameRaw;
+    }
+
+    public String getCollegenameRaw() {
+        return collegenameRaw;
     }
 
     public void setCollegename(String collegename) {
@@ -71,19 +79,19 @@ public class Admin {
         this.pincode = pincode;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }
