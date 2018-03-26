@@ -31,22 +31,53 @@ public class AdminLoginActivity extends AppCompatActivity {
 
     }
 
+    private int checker()
+    {
+        if(email.getText().toString().equals(""))
+        {
+           return 1;
+        }
+        if(password.getText().toString().equals(""))
+        {
+          return 2;
+        }
+        return 0;
+    }
+
+
 
     public void adminLogin(View view){
+        int check = checker();
+        if(check==0){
         firebaseAuth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if(task.isSuccessful())
+                {
                     Toast.makeText(AdminLoginActivity.this,"Logged In Successfully",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(AdminLoginActivity.this,AdminMainActivity.class);
                     startActivity(intent);
                 }
-                else{
-                    Toast.makeText(AdminLoginActivity.this,"Wrong Email or Password",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+
+                else
+                    {
+                        Toast.makeText(AdminLoginActivity.this,"Wrong Email or Password",Toast.LENGTH_LONG).show();
+                    }
+
+                } }
+        );}
+
+        else if(check==1){
+            Toast.makeText(AdminLoginActivity.this,"Email field cannot be empty!!",Toast.LENGTH_LONG).show();
+        }
+
+        else if(check==2){
+            Toast.makeText(AdminLoginActivity.this,"Password required!!",Toast.LENGTH_LONG).show();
+        }
+
+
     }
+
 
     public void adminSignup(View view){
         Intent intent = new Intent(this,AdminSignupActivity.class);
