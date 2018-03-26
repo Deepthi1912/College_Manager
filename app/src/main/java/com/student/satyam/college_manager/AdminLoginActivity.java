@@ -51,6 +51,5 @@ public class AdminLoginActivity extends AppCompatActivity {
     public void adminSignup(View view){
         Intent intent = new Intent(this,AdminSignupActivity.class);
         startActivity(intent);
-
     }
 }
