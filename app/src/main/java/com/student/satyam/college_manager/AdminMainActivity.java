@@ -1,7 +1,9 @@
 package com.student.satyam.college_manager;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,8 +46,18 @@ public class AdminMainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
+
+
+    public void adminSignOut(View view){
+        mAuth.signOut();
+        Intent intent = new Intent(AdminMainActivity.this,LoginChooserActivity.class);
+        startActivity(intent);
+    }
+
+
+
+
+
+
 }

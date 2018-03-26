@@ -39,7 +39,8 @@
         <activity
             android:name=".TeacherSignupActivity"
             android:parentActivityName=".LoginChooserActivity" />
-        <activity android:name=".AdminMainActivity"></activity>
+        <activity android:name=".AdminMainActivity" />
+        <activity android:name=".AdminEditSettingActivity"></activity>
     </application>
 
 </manifest>
