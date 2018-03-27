@@ -21,15 +21,31 @@ public class AdminLoginActivity extends AppCompatActivity {
     EditText email;
     EditText password;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_login);
-        firebaseAuth = FirebaseAuth.getInstance();
-        email = (EditText)findViewById(R.id.admin_login_email);
-        password = (EditText)findViewById(R.id.admin_login_password);
 
-    }
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            firebaseAuth = FirebaseAuth.getInstance();
+            email = (EditText) findViewById(R.id.admin_email);
+            password = (EditText)findViewById(R.id.admin_password);
+            class MyClickListener implements View.OnClickListener{
+                @Override
+                public void onClick(View view) {
+                    view = (EditText)view;
+                    view.setText("");
+                }
+            }
+
+            MyClickListener mcl = new MyClickListener();
+            email.setOnClickListener(mcl);
+            password.setOnClickListener(mcl);
+        }
+
+
+
+
+
+
 
     private int checker()
     {
