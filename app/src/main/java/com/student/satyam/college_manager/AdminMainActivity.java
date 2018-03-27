@@ -55,6 +55,10 @@ public class AdminMainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void adminEditAccountSetting(View view){
+        Intent intent = new Intent(AdminMainActivity.this,AdminEditSettingActivity.class);
+        startActivity(intent);
+    }
 
 
 
