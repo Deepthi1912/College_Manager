@@ -36,7 +36,6 @@ public class AdminMainActivity extends AppCompatActivity {
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //String name = dataSnapshot.child("Admin").getValue().toString();
                 Admin admin = dataSnapshot.getValue(Admin.class);
                 textField.setText("Welcome "+admin.getfName()+" "+admin.getlName());
             }
