@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -21,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Objects;
 
 public class AdminEditSettingActivity extends AppCompatActivity {
+
 
     private DatabaseReference databaseReference;
     private FirebaseUser firebaseUser;
@@ -34,6 +36,8 @@ public class AdminEditSettingActivity extends AppCompatActivity {
     private EditText email;
     private EditText confpassword;
     private String pass;
+    private String ema;
+    private Admin admin;
 
 
     @Override
@@ -51,88 +55,122 @@ public class AdminEditSettingActivity extends AppCompatActivity {
         pincode = findViewById(R.id.admin_pincode);
         password = findViewById(R.id.admin_password);
         confpassword = findViewById(R.id.admin_confpassword);
-        pass = password.getText().toString();
         Toast.makeText(AdminEditSettingActivity.this, "Leave the field empty if you dont want to update", Toast.LENGTH_SHORT).show();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                admin = dataSnapshot.getValue(Admin.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
+    private Admin changeAdmin(Admin a){
+
+        if (!fName.getText().toString().equals("")) {
+            a.setfName(fName.getText().toString());
+        }
+        if (!lName.getText().toString().equals("")) {
+            a.setlName(lName.getText().toString());
+        }
+        if (!ema.equals("")) {
+            a.setEmail(ema);
+        }
+        if (!state.getSelectedItem().toString().equals("")) {
+            a.setState(state.getSelectedItem().toString());
+        }
+        if (!city.getText().toString().equals("")) {
+            a.setCity(city.getText().toString());
+        }
+        if (!collegename.getText().toString().equals("")) {
+           a.setCollegenameRaw(collegename.getText().toString());
+        }
+        if (!pincode.getText().toString().equals("")) {
+           a.setPincode(pincode.getText().toString());
+        }
+
+        return a;
+
+
+    }
+
+
     public void adminChangeSetting(View view) {
+        ema = email.getText().toString();
+        pass = password.getText().toString();
+        databaseReference.setValue(null).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AdminEditSettingActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         if (pass.equals(""))
         {
-            if (!fName.getText().toString().equals("")) {
-                databaseReference.child("fName").setValue(fName.getText().toString());
-            }
-
-            if (!lName.getText().toString().equals("")) {
-                databaseReference.child("lName").setValue(lName.getText().toString());
-            }
-
-            if (!email.getText().toString().equals("")) {
-                firebaseUser.updateEmail(email.getText().toString());
-
-            }
-            if (!state.getSelectedItem().toString().equals("")) {
-                databaseReference.child("state").setValue(state.getSelectedItem().toString());
-            }
-
-            if (!collegename.getText().toString().equals("")) {
-                databaseReference.child("collegename").setValue(collegename.getText().toString());
-            }
-            if (!city.getText().toString().equals("")) {
-                databaseReference.child("city").setValue(city.getText().toString());
-            }
-            if (!pincode.getText().toString().equals("")) {
-                databaseReference.child("fname").setValue(fName.getText().toString());
-            }
-        } else {
-
-            if (pass.equals(confpassword.getText().toString()))
-            {
-                firebaseUser.updatePassword(pass).addOnFailureListener(new OnFailureListener() {
+            if(!(ema.equals(""))) {
+                firebaseUser.updateEmail(ema).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AdminEditSettingActivity.this, "Weak Password!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminEditSettingActivity.this, "Invalid email", Toast.LENGTH_SHORT).show();
                     }
-                });
-
-                firebaseUser.updatePassword(pass).addOnSuccessListener(new OnSuccessListener<Void>() {
+                }).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        if (!fName.getText().toString().equals("")) {
-                            databaseReference.child("fName").setValue(fName.getText().toString());
-                        }
-
-                        if (!lName.getText().toString().equals("")) {
-                            databaseReference.child("lName").setValue(lName.getText().toString());
-                        }
-
-                        if (!email.getText().toString().equals("")) {
-                            firebaseUser.updateEmail(email.getText().toString());
-
-                        }
-                        if (!state.getSelectedItem().toString().equals("")) {
-                            databaseReference.child("state").setValue(state.getSelectedItem().toString());
-                        }
-
-                        if (!collegename.getText().toString().equals("")) {
-                            databaseReference.child("collegename").setValue(collegename.getText().toString());
-                        }
-                        if (!city.getText().toString().equals("")) {
-                            databaseReference.child("city").setValue(city.getText().toString());
-                        }
-                        if (!pincode.getText().toString().equals("")) {
-                            databaseReference.child("fname").setValue(fName.getText().toString());
-                        }
-                        Toast.makeText(AdminEditSettingActivity.this, "Settings Successfully Updated", Toast.LENGTH_SHORT).show();
+                    public void onSuccess(Void aVoid){changeAdmin(admin);
                     }
                 });
-
             }
-            else
-            {
-                Toast.makeText(AdminEditSettingActivity.this, "Passwords Did Not Match", Toast.LENGTH_SHORT).show();
+
+            if(ema.equals("")) {
+                changeAdmin(admin);
             }
         }
 
+        else {
+        if (pass.equals(confpassword.getText().toString()) && pass.length()>=6){
+            if(ema.equals(""))
+                {
+                    firebaseUser.updatePassword(pass).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(AdminEditSettingActivity.this, "Weak Password!!", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            changeAdmin(admin);
+                        }
+                    });
+                }
+                else
+                {
+                    firebaseUser.updatePassword(pass).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            firebaseUser.updateEmail(ema).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(AdminEditSettingActivity.this, "Invalid Email", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    changeAdmin(admin);
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+            else
+            {
+                if(!pass.equals(confpassword.getText().toString())){Toast.makeText(AdminEditSettingActivity.this, "Passwords Did Not Match", Toast.LENGTH_SHORT).show();}
+                else{Toast.makeText(AdminEditSettingActivity.this, "Weak Password", Toast.LENGTH_SHORT).show();}
+            }
+        }
+        databaseReference.setValue(admin);
         Intent intent = new Intent(AdminEditSettingActivity.this,AdminMainActivity.class);
         startActivity(intent);
     }

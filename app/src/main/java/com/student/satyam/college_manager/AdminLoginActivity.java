@@ -27,20 +27,19 @@ public class AdminLoginActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_admin_login);
             firebaseAuth = FirebaseAuth.getInstance();
+
             email = (EditText) findViewById(R.id.admin_login_email);
-            password = (EditText)findViewById(R.id.admin_login_password);
-            class MyClickListener implements View.OnClickListener{
+            password = (EditText) findViewById(R.id.admin_login_password);
+            class MyClickListener implements View.OnClickListener {
                 @Override
                 public void onClick(View view) {
                     ((EditText) view).setText("");
                 }
             }
-
             MyClickListener mcl = new MyClickListener();
             email.setOnClickListener(mcl);
             password.setOnClickListener(mcl);
         }
-
 
 
 

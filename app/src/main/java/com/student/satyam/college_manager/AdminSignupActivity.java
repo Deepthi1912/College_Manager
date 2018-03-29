@@ -31,7 +31,6 @@ public class AdminSignupActivity extends AppCompatActivity {
     private EditText confpassword;
     private FirebaseAuth mAuth;
     private ProgressDialog regProgress;
-    private FirebaseDatabase database;
     private DatabaseReference ref;
     private Admin admin;
 
@@ -39,15 +38,15 @@ public class AdminSignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_signup);
-        fName = findViewById(R.id.admin_first_name);
-        lName = findViewById(R.id.admin_second_name);
-        email = findViewById(R.id.admin_email);
-        collegename = findViewById(R.id.admin_college_name);
-        state = findViewById(R.id.admin_state);
-        city = findViewById(R.id.admin_city);
-        pincode = findViewById(R.id.admin_pincode);
-        password = findViewById(R.id.admin_password);
-        confpassword = findViewById(R.id.admin_confpassword);
+        fName = (EditText)findViewById(R.id.admin_first_name);
+        lName = (EditText)findViewById(R.id.admin_second_name);
+        email = (EditText)findViewById(R.id.admin_email);
+        collegename = (EditText)findViewById(R.id.admin_college_name);
+        state = (Spinner) findViewById(R.id.admin_state);
+        city = (EditText)findViewById(R.id.admin_city);
+        pincode = (EditText)findViewById(R.id.admin_pincode);
+        password = (EditText)findViewById(R.id.admin_password);
+        confpassword = (EditText)findViewById(R.id.admin_confpassword);
         admin = new Admin();
         ref = FirebaseDatabase.getInstance().getReference("Admin");
         mAuth = FirebaseAuth.getInstance();
@@ -58,23 +57,25 @@ public class AdminSignupActivity extends AppCompatActivity {
     private void getValues() {
         admin.setfName(fName.getText().toString().trim());
         admin.setlName(lName.getText().toString().trim());
-        admin.setCollegename(collegename.getText().toString().replaceAll("[^A-Za-z0-9]","").trim());
-        admin.setCollegenameRaw(collegename.getText().toString().replaceAll("[^\\w\\s]","").trim());
+        admin.setCollegename(collegename.getText().toString().trim());
+        admin.setCollegenameRaw(collegename.getText().toString().trim());
         admin.setCity(city.getText().toString().trim());
         admin.setEmail(email.getText().toString().trim());
         admin.setState(state.getSelectedItem().toString().trim());
         admin.setPincode(pincode.getText().toString().trim());
+        admin.setUid("0");
+
     }
 
 
     private int checker(Admin admin){
-        if(admin.getPincode().length() != 6){return 1;}
         if(!confpassword.getText().toString().equals(password.getText().toString())){return 2;}
         if(admin.getfName().equals("")){return 3;}
         if(admin.getEmail().equals("")) {return 4;}
         if(admin.getCity().equals("")) {return 5;}
         if(admin.getCollegenameRaw().equals("")) {return 6;}
         if(admin.getState().equals("")){return  7;}
+        if(admin.getPincode().length() != 6){return 1;}
         return 0;
     }
 

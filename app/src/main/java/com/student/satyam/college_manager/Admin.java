@@ -42,7 +42,7 @@ public class Admin {
     }
 
     public void setCollegenameRaw(String collegenameRaw) {
-        this.collegename = collegenameRaw;
+        this.collegenameRaw = collegenameRaw;
     }
 
     public String getCollegenameRaw() {
