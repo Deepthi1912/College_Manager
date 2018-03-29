@@ -59,6 +59,10 @@ public class AdminMainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void adminGiveNotice(View view){
+        Intent intent = new Intent(AdminMainActivity.this,AdminUploadActivity.class);
+        startActivity(intent);
+    }
 
 
 
