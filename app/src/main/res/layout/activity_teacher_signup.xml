@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/firstname"
+        android:id="@+id/teacher_firstname_signup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -16,13 +16,13 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/lastname"
+        app:layout_constraintBottom_toTopOf="@+id/teacher_lastname_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/lastname"
+        android:id="@+id/teacher_lastname_signup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -33,7 +33,7 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/firstname" />
+        app:layout_constraintTop_toBottomOf="@+id/teacher_firstname_signup" />
 
     <TextView
         android:id="@+id/collegename_lable"
@@ -45,7 +45,7 @@
         android:layout_marginTop="16dp"
         android:text="College Name"
         app:layout_constraintBottom_toTopOf="@+id/email_lable"
-        app:layout_constraintEnd_toStartOf="@+id/collegename"
+        app:layout_constraintEnd_toStartOf="@+id/teacher_collegename_signup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastname_lable" />
 
@@ -56,7 +56,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="First Name"
-        app:layout_constraintBaseline_toBaselineOf="@+id/firstname"
+        app:layout_constraintBaseline_toBaselineOf="@+id/teacher_firstname_signup"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -68,12 +68,12 @@
         android:layout_marginStart="8dp"
         android:text="Last Name"
         android:textSize="12sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/lastname"
-        app:layout_constraintEnd_toStartOf="@+id/lastname"
+        app:layout_constraintBaseline_toBaselineOf="@+id/teacher_lastname_signup"
+        app:layout_constraintEnd_toStartOf="@+id/teacher_lastname_signup"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/collegename"
+        android:id="@+id/teacher_collegename_signup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -82,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/lastname" />
+        app:layout_constraintTop_toBottomOf="@+id/teacher_lastname_signup" />
 
     <TextView
         android:id="@+id/email_lable"
@@ -91,12 +91,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Email"
-        app:layout_constraintBaseline_toBaselineOf="@+id/email"
+        app:layout_constraintBaseline_toBaselineOf="@+id/teacher_email_signup"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/teacher_email_signup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -107,7 +107,7 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/collegename" />
+        app:layout_constraintTop_toBottomOf="@+id/teacher_collegename_signup" />
 
     <TextView
         android:id="@+id/password_lable"
@@ -131,7 +131,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/teacher_email_signup" />
 
     <TextView
         android:id="@+id/confirmpassword_lable"
@@ -140,12 +140,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Confirm password"
-        app:layout_constraintBaseline_toBaselineOf="@+id/confirmpassword"
+        app:layout_constraintBaseline_toBaselineOf="@+id/teacher_confpassword_signup"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/confirmpassword"
+        android:id="@+id/teacher_confpassword_signup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"

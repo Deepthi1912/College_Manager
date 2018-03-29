@@ -27,9 +27,7 @@ public class Admin {
         return fName;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
-    }
+    public void setfName(String fName) {this.fName = fName;}
 
     public String getlName() {
         return lName;
