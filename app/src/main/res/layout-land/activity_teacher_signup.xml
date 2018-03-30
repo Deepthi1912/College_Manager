@@ -45,12 +45,10 @@
             android:id="@+id/teacher_collegename_lable"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="College Name"
-            app:layout_constraintBottom_toTopOf="@+id/teacher_email_lable"
             app:layout_constraintEnd_toStartOf="@+id/teacher_collegename_signup"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/teacher_lastname_lable" />
@@ -109,13 +107,13 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="textEmailAddress"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/teacher_collegename_signup" />
+            tools:layout_editor_absoluteY="194dp" />
 
         <TextView
             android:id="@+id/teacher_password_lable"
@@ -123,22 +121,22 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="31dp"
             android:text="Password"
+            app:layout_constraintBaseline_toBaselineOf="@+id/teacher_password"
             app:layout_constraintEnd_toStartOf="@+id/teacher_password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teacher_email_lable" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/teacher_password"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/teacher_email_signup" />
 
@@ -148,11 +146,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
             android:text="Confirm password"
+            app:layout_constraintBaseline_toBaselineOf="@+id/teacher_confirmpassword"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teacher_password_lable" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/teacher_confirmpassword"
@@ -195,7 +193,110 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.77" />
+            app:layout_constraintGuide_percent="0.84" />
+
+        <TextView
+            android:id="@+id/semester_lable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Semester"
+            app:layout_constraintBottom_toBottomOf="@+id/cb5_teacher_signup_activity"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/teacher_collegename_lable" />
+
+        <CheckBox
+            android:id="@+id/cb1_teacher_signup_activity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="1"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/teacher_collegename_signup" />
+
+        <CheckBox
+            android:id="@+id/cb2_teacher_signup_activity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="2"
+            app:layout_constraintStart_toEndOf="@+id/cb1_teacher_signup_activity"
+            app:layout_constraintTop_toBottomOf="@+id/teacher_collegename_signup" />
+
+        <CheckBox
+            android:id="@+id/cb3_teacher_signup_activity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="3"
+            app:layout_constraintStart_toEndOf="@+id/cb2_teacher_signup_activity"
+            app:layout_constraintTop_toBottomOf="@+id/teacher_collegename_signup" />
+
+        <CheckBox
+            android:id="@+id/cb4_teacher_signup_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="4"
+            app:layout_constraintStart_toEndOf="@+id/cb3_teacher_signup_activity"
+            app:layout_constraintTop_toBottomOf="@+id/teacher_collegename_signup" />
+
+        <CheckBox
+            android:id="@+id/cb5_teacher_signup_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="5"
+            app:layout_constraintBottom_toTopOf="@+id/teacher_email_signup"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/cb1_teacher_signup_activity" />
+
+        <CheckBox
+            android:id="@+id/cb6_teacher_signup_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="6"
+            app:layout_constraintBottom_toTopOf="@+id/teacher_email_signup"
+            app:layout_constraintStart_toEndOf="@+id/cb5_teacher_signup_activity"
+            app:layout_constraintTop_toBottomOf="@+id/cb2_teacher_signup_activity" />
+
+        <CheckBox
+            android:id="@+id/cb7_teacher_signup_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="7"
+            app:layout_constraintBottom_toTopOf="@+id/teacher_email_signup"
+            app:layout_constraintStart_toEndOf="@+id/cb6_teacher_signup_activity"
+            app:layout_constraintTop_toBottomOf="@+id/cb3_teacher_signup_activity" />
+
+        <CheckBox
+            android:id="@+id/cb8_teacher_signup_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="8"
+            app:layout_constraintBottom_toTopOf="@+id/teacher_email_signup"
+            app:layout_constraintStart_toEndOf="@+id/cb7_teacher_signup_activity"
+            app:layout_constraintTop_toBottomOf="@+id/cb4_teacher_signup_activity" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
