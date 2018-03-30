@@ -65,6 +65,11 @@ public class AdminMainActivity extends AppCompatActivity {
     }
 
 
+    public void adminRemoveNotice(View view){
+        Intent intent =new Intent(AdminMainActivity.this,DisplayImagesActivity.class);
+        startActivity(intent);
+    }
+
 
 
 }

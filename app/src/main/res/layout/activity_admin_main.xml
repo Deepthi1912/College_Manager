@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:onClick="adminGiveNotice"
         android:text="Give Notice"
-        app:layout_constraintBottom_toTopOf="@+id/admi_add_delete_acccounts"
+        app:layout_constraintBottom_toTopOf="@+id/admi_delete_notice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/admin_welcome" />
@@ -33,12 +33,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/admi_add_delete_acccounts"
+        android:id="@+id/admi_delete_notice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Add/Delete Acounts"
+        android:onClick="adminRemoveNotice"
+        android:text="Remove Notice"
         app:layout_constraintBottom_toTopOf="@+id/admin_account_setting"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +56,7 @@
         app:layout_constraintBottom_toTopOf="@+id/admin_signout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admi_add_delete_acccounts" />
+        app:layout_constraintTop_toBottomOf="@+id/admi_delete_notice" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline4"
