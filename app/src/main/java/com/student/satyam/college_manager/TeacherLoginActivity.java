@@ -24,8 +24,8 @@ public class TeacherLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_teacher_chooser);
         tfirebaseAuth = FirebaseAuth.getInstance();
 
-        temail = (EditText) findViewById(R.id.admin_login_email);
-        tpassword = (EditText) findViewById(R.id.admin_login_password);
+        temail = (EditText) findViewById(R.id.teacher_loginemail);
+        tpassword = (EditText) findViewById(R.id.teacher_login_password);
         class MyClickListener implements View.OnClickListener {
             @Override
             public void onClick(View view) {
@@ -59,7 +59,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
                 if(task.isSuccessful())
                 {
                     Toast.makeText(TeacherLoginActivity.this,"Logged In Successfully",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(TeacherLoginActivity.this,AdminMainActivity.class);
+                    Intent intent = new Intent(TeacherLoginActivity.this,TeacherMainActivity.class);
                     startActivity(intent);
                 }
 

@@ -23,6 +23,8 @@ public class Teacher {
         this.uid = uid;
     }
 
+    public Teacher(){}
+
     public String getfName() {
         return fName;
     }

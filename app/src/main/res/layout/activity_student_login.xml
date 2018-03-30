@@ -6,14 +6,14 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/admin_login_email"
+        android:id="@+id/teacher_loginemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Username"
-        app:layout_constraintBottom_toTopOf="@+id/admin_login_password"
+        app:layout_constraintBottom_toTopOf="@+id/teacher_login_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,21 +21,21 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
-        android:id="@+id/admin_login_password"
+        android:id="@+id/teacher_login_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="textPassword"
         android:text="Password"
-        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintBottom_toTopOf="@+id/teacher_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admin_login_email" />
+        app:layout_constraintTop_toBottomOf="@+id/teacher_loginemail" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/teacher_signup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="225dp"
@@ -47,7 +47,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admin_login_password" />
+        app:layout_constraintTop_toBottomOf="@+id/teacher_login_password" />
 
     <Button
         android:id="@+id/signup"
@@ -57,7 +57,7 @@
         android:layout_marginStart="8dp"
         android:onClick="signupStudent"
         android:text="signup"
-        app:layout_constraintBaseline_toBaselineOf="@+id/login"
+        app:layout_constraintBaseline_toBaselineOf="@+id/teacher_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
 
