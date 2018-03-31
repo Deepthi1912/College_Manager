@@ -43,6 +43,7 @@
             android:name=".TeacherSignupActivity"
             android:parentActivityName=".LoginChooserActivity" />
         <activity android:name=".AdminMainActivity" />
+        <activity android:name=".TeacherMainActivity" />
         <activity android:name=".AdminEditSettingActivity" />
         <activity android:name=".AdminUploadActivity" />
         <activity android:name=".AdminRemoveNoticeActivity" />

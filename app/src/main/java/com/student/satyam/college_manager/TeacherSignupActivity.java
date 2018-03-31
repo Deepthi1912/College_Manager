@@ -22,8 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.security.AccessController.getContext;
-
 public class TeacherSignupActivity extends AppCompatActivity {
 
     private EditText tfName;
@@ -48,7 +46,7 @@ public class TeacherSignupActivity extends AppCompatActivity {
         tlName = findViewById(R.id.teacher_lastname_signup);
         temail = findViewById(R.id.teacher_email_signup);
         tcollegename = findViewById(R.id.teacher_collegename_signup);
-        tpassword = findViewById(R.id.admin_login_password);
+        tpassword = findViewById(R.id.teacher_login_password);
         cb[0] = findViewById(R.id.cb1_teacher_signup_activity);
         cb[1] = findViewById(R.id.cb2_teacher_signup_activity);
         cb[2] = findViewById(R.id.cb3_teacher_signup_activity);

@@ -12,7 +12,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 
 public class AdminLoginActivity extends AppCompatActivity {
@@ -28,8 +27,8 @@ public class AdminLoginActivity extends AppCompatActivity {
             setContentView(R.layout.activity_admin_login);
             firebaseAuth = FirebaseAuth.getInstance();
 
-            email = (EditText) findViewById(R.id.admin_login_email);
-            password = (EditText) findViewById(R.id.admin_login_password);
+            email = (EditText) findViewById(R.id.teacher_loginemail);
+            password = (EditText) findViewById(R.id.teacher_login_password);
             class MyClickListener implements View.OnClickListener {
                 @Override
                 public void onClick(View view) {

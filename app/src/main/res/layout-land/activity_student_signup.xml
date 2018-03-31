@@ -166,12 +166,12 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:text="Password"
-            app:layout_constraintBaseline_toBaselineOf="@+id/admin_login_password"
-            app:layout_constraintEnd_toStartOf="@+id/admin_login_password"
+            app:layout_constraintBaseline_toBaselineOf="@+id/teacher_login_password"
+            app:layout_constraintEnd_toStartOf="@+id/teacher_login_password"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/admin_login_password"
+            android:id="@+id/teacher_login_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -206,7 +206,7 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/admin_login_password" />
+            app:layout_constraintTop_toBottomOf="@+id/teacher_login_password" />
 
         <Button
             android:id="@+id/signup"
