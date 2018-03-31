@@ -23,7 +23,9 @@ public class AdminUploadActivity extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
+    private EditText subject;
     private EditText notice;
+    String mime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,34 +34,59 @@ public class AdminUploadActivity extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference("Admin Images");
         notice = findViewById(R.id.admin_notice);
+        subject = findViewById(R.id.admin_notice_subject);
+        class clickListener implements View.OnClickListener {
+            @Override
+            public void onClick(View view) {
+                ((EditText)view).setText("");
+            }
+        }
+        clickListener cl = new clickListener();
+        notice.setOnClickListener(cl);
+        subject.setOnClickListener(cl);
+
+
+
+
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,final Intent data) {
-        super.onActivityResult(requestCode,resultCode,data);
-        if(resultCode == RESULT_OK){
-            storageReference.child("Admin").child(data.getData().getLastPathSegment()).putFile(data.getData()).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(Exception exception) {
-                    Toast.makeText(AdminUploadActivity.this,"Could Not Upload Data",Toast.LENGTH_LONG).show();
-                }
-            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    ImageUploadInfo imageUploadInfo = new ImageUploadInfo(data.getData().getLastPathSegment(),taskSnapshot.getDownloadUrl().toString());
-                    databaseReference.child(databaseReference.push().getKey()).setValue(imageUploadInfo).addOnFailureListener(new OnFailureListener() {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data != null) {
+            mime = this.getContentResolver().getType(data.getData());
+            if (mime.contains("image") || mime.contains("video") || mime.contains("text") || mime.contains("application/pdf") || mime.contains("application/powerpoint") || mime.contains("application/msword")) {
+                final String key = databaseReference.push().getKey();
+                if (resultCode == RESULT_OK) {
+                    storageReference.child("Admin Images").child(key).putFile(data.getData()).addOnFailureListener(new OnFailureListener() {
                         @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(AdminUploadActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                        public void onFailure(Exception exception) {
+                            Toast.makeText(AdminUploadActivity.this, "Could Not Upload Data", Toast.LENGTH_LONG).show();
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            ImageUploadInfo imageUploadInfo = new ImageUploadInfo(key, taskSnapshot.getDownloadUrl().toString(), data.getData().getLastPathSegment());
+                            databaseReference.child(key).setValue(imageUploadInfo).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(AdminUploadActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            Toast.makeText(AdminUploadActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
                         }
                     });
-                    Toast.makeText(AdminUploadActivity.this,"Successfully Uploaded",Toast.LENGTH_LONG).show();
                 }
-            });
+            }
+            else
+            {
+                Toast.makeText(AdminUploadActivity.this, "Could Not Upload this type of data", Toast.LENGTH_LONG).show();
+            }
         }
     }
-
     public void performFileSearch(View view) {
+
 
         // ACTION_OPEN_DOCUMENT is the intent to choose a file via the system's file
         // browser.
@@ -70,21 +97,27 @@ public class AdminUploadActivity extends AppCompatActivity {
         intent.addCategory(Intent.CATEGORY_OPENABLE);
 
         intent.setType("*/*");
-
         startActivityForResult(intent, 42);
 
     }
 
 
     public void publishChanges(View view){
-        FirebaseDatabase.getInstance().getReference().child("Admin Notice").setValue(notice.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+        String sub = subject.getText().toString().trim();
+        if(sub.equals(""))
+        {
+            Toast.makeText(AdminUploadActivity.this,"Fill the subject",Toast.LENGTH_LONG).show();
+        }
+        else{
+        FirebaseDatabase.getInstance().getReference().child("Admin Notice").child(sub).setValue(new AdminNotice(sub,notice.getText().toString())).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(AdminUploadActivity.this,"Notice Sent",Toast.LENGTH_LONG).show();
             }
         });
-
+        }
     }
+
 
 
 

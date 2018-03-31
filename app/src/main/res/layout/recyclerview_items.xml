@@ -21,15 +21,23 @@
             android:layout_marginBottom="10dp"/>
 
         <TextView
+            android:id="@+id/ImageNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="#000"
-            android:text="JSon Image Name"
-            android:gravity="center"
-            android:id="@+id/ImageNameTextView"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="JSon Image Name"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            card_view:srcCompat="@android:drawable/ic_delete" />
 
     </RelativeLayout>
 

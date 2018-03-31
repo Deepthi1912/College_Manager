@@ -1,6 +1,9 @@
 package com.student.satyam.college_manager;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.icu.util.Freezable;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,12 +28,13 @@ public class DisplayImagesActivity extends AppCompatActivity {
 
     // Creating DatabaseReference.
     DatabaseReference databaseReference;
+    DatabaseReference databaseReference2;
 
     // Creating RecyclerView.
-    RecyclerView recyclerView;
+    public RecyclerView recyclerView,recyclerView2;
 
     // Creating RecyclerView.Adapter.
-    RecyclerView.Adapter adapter ;
+    RecyclerView.Adapter adapter,adapter2 ;
 
     // Creating Progress dialog
     ProgressDialog progressDialog;
@@ -37,6 +42,7 @@ public class DisplayImagesActivity extends AppCompatActivity {
 
     // Creating List of ImageUploadInfo class.
     List<ImageUploadInfo> list = new ArrayList<>();
+    List<AdminNotice> list2 = new ArrayList<>();
 
 
     @Override
@@ -46,12 +52,15 @@ public class DisplayImagesActivity extends AppCompatActivity {
 
         // Assign id to RecyclerView.
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView2 = (RecyclerView) findViewById(R.id.recyclerView2);
 
         // Setting RecyclerView size true.
         recyclerView.setHasFixedSize(true);
+        recyclerView2.setHasFixedSize(true);
 
         // Setting RecyclerView layout as LinearLayout.
         recyclerView.setLayoutManager(new LinearLayoutManager(DisplayImagesActivity.this));
+        recyclerView2.setLayoutManager(new LinearLayoutManager(DisplayImagesActivity.this));
 
         // Assign activity this to progress dialog.
         progressDialog = new ProgressDialog(DisplayImagesActivity.this);
@@ -65,6 +74,7 @@ public class DisplayImagesActivity extends AppCompatActivity {
         // Setting up Firebase image upload folder path in databaseReference.
         // The path is already defined in MainActivity.
         databaseReference = FirebaseDatabase.getInstance().getReference("Admin Images");
+        databaseReference2 = FirebaseDatabase.getInstance().getReference("Admin Notice");
 
         // Adding Add Value Event Listener to databaseReference.
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -78,13 +88,12 @@ public class DisplayImagesActivity extends AppCompatActivity {
                     list.add(imageUploadInfo);
                 }
 
-                adapter = new RecyclerViewAdapter(getApplicationContext(), list);
+                adapter = new RecyclerViewAdapter(getApplicationContext(), list,recyclerView);
 
                 recyclerView.setAdapter(adapter);
 
                 // Hiding the progress dialog.
                 progressDialog.dismiss();
-                Toast.makeText(DisplayImagesActivity.this,list.get(0).getImageURL(),Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -96,36 +105,31 @@ public class DisplayImagesActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+        databaseReference2.addValueEventListener(new ValueEventListener() {
             @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                View child = rv.findChildViewUnder(e.getX(),e.getY());
-                if(child!=null) {
-                    Toast.makeText(DisplayImagesActivity.this,child.getClass().toString(),Toast.LENGTH_SHORT).show();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
+                    AdminNotice adminNotice = postSnapshot.getValue(AdminNotice.class);
+
+                    list2.add(adminNotice);
                 }
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+                adapter2 = new RecyclerView2Adapter(getApplicationContext(), list2,recyclerView2);
+                recyclerView2.setAdapter(adapter2);
 
             }
 
             @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
 
+
+
+
     }
 
-
-
-    public void removePicture(View view) {
-        ImageUploadInfo imageUploadInfo = RecyclerViewAdapter.imageUploadInfo;
-        FirebaseStorage.getInstance().getReference("Admin").child(imageUploadInfo.getImageName()).delete();
-
-    }
 
 
 
