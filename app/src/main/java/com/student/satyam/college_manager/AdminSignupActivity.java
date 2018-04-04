@@ -17,6 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class AdminSignupActivity extends AppCompatActivity {
 
@@ -58,7 +59,6 @@ public class AdminSignupActivity extends AppCompatActivity {
         admin.setfName(fName.getText().toString().trim());
         admin.setlName(lName.getText().toString().trim());
         admin.setCollegename(collegename.getText().toString().trim());
-        admin.setCollegenameRaw(collegename.getText().toString().trim());
         admin.setCity(city.getText().toString().trim());
         admin.setEmail(email.getText().toString().trim());
         admin.setState(state.getSelectedItem().toString().trim());
@@ -69,11 +69,12 @@ public class AdminSignupActivity extends AppCompatActivity {
 
 
     private int checker(Admin admin){
+
         if(!confpassword.getText().toString().equals(password.getText().toString())){return 2;}
         if(admin.getfName().equals("")){return 3;}
         if(admin.getEmail().equals("")) {return 4;}
         if(admin.getCity().equals("")) {return 5;}
-        if(admin.getCollegenameRaw().equals("")) {return 6;}
+        if(admin.getCollegename().equals("")) {return 6;}
         if(admin.getState().equals("")){return  7;}
         if(admin.getPincode().length() != 6){return 1;}
         return 0;
@@ -102,6 +103,7 @@ public class AdminSignupActivity extends AppCompatActivity {
                                                 Toast.makeText(AdminSignupActivity.this,e.getMessage(), Toast.LENGTH_SHORT).show();
                                             }
                                         });
+                                        ref.child("Colleges").child((collegename.getText().toString().trim().replaceAll("[^a-zA-Z0-9\\s+]", ""))).setValue("");
                                         Toast.makeText(AdminSignupActivity.this, "Authentication succeeded.", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(AdminSignupActivity.this,AdminMainActivity.class);
                                         startActivity(intent);

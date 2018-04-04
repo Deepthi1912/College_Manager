@@ -44,12 +44,8 @@ public class AdminUploadActivity extends AppCompatActivity {
         clickListener cl = new clickListener();
         notice.setOnClickListener(cl);
         subject.setOnClickListener(cl);
-
-
-
-
-
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,final Intent data) {
@@ -85,6 +81,8 @@ public class AdminUploadActivity extends AppCompatActivity {
             }
         }
     }
+
+
     public void performFileSearch(View view) {
 
 
@@ -117,11 +115,6 @@ public class AdminUploadActivity extends AppCompatActivity {
         });
         }
     }
-
-
-
-
-
 
 
 }

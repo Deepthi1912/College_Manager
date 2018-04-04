@@ -12,9 +12,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-/**
- * Created by AndroidJSon.com on 6/18/2017.
- */
 
 public class RecyclerView2Adapter extends RecyclerView.Adapter<RecyclerView2Adapter.ViewHolder> {
 

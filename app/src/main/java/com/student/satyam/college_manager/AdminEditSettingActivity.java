@@ -86,7 +86,7 @@ public class AdminEditSettingActivity extends AppCompatActivity {
             a.setCity(city.getText().toString());
         }
         if (!collegename.getText().toString().equals("")) {
-           a.setCollegenameRaw(collegename.getText().toString());
+           a.setCollegename(collegename.getText().toString());
         }
         if (!pincode.getText().toString().equals("")) {
            a.setPincode(pincode.getText().toString());

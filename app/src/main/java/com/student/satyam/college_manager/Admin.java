@@ -4,7 +4,6 @@ public class Admin {
     private String fName;
     private String lName;
     private String collegename;
-    private String collegenameRaw;
     private String state;
     private String city;
     private String pincode;
@@ -39,14 +38,6 @@ public class Admin {
 
     public String getCollegename() {
         return collegename;
-    }
-
-    public void setCollegenameRaw(String collegenameRaw) {
-        this.collegenameRaw = collegenameRaw;
-    }
-
-    public String getCollegenameRaw() {
-        return collegenameRaw;
     }
 
     public void setCollegename(String collegename) {
